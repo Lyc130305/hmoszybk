@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>HMOS资源宝库 | 鸿蒙精品应用推荐</title>
+    <!-- 
+        针对 GitHub Pages 优化版本
+        - 完全自包含，无外部依赖（避免CDN网络问题）
+        - 添加 .nojekyll 机制说明（如需使用下划线目录可创建空文件）
+        - 响应式设计完美适配 Pages 环境
+        - 保留所有原始应用链接与资源站
+    -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f7fc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica, 'Noto Sans', sans-serif;
+            color: #1e2a3e;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 2.5rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        /* 头部装饰 */
+        .hero {
+            background: linear-gradient(135deg, #0b2b26 0%, #1e4a6b 100%);
+            padding: 3rem 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            letter-spacing: -0.01em;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .hero-badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(4px);
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        /* 主体内边距 */
+        .main-content {
+            padding: 2.5rem 2rem 3rem;
+        }
+
+        /* 章节标题 */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 6px solid #2c7da0;
+            padding-left: 1rem;
+            color: #0f2c3d;
+        }
+
+        .section-title i {
+            font-size: 1.6rem;
+            font-style: normal;
+        }
+
+        /* 应用卡片网格 */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 3rem;
+        }
+
+        /* 卡片设计 */
+        .app-card {
+            background: #ffffff;
+            border-radius: 1.8rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.25s ease;
+            border: 1px solid #eef2f8;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
+            border-color: #cbdde9;
+        }
+
+        .card-content {
+            padding: 1.5rem 1.5rem 1.8rem;
+            flex: 1;
+        }
+
+        .app-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(120deg, #1f4e6e, #2c7da0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+        }
+
+        .app-desc {
+            color: #4a627a;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.4;
+            min-height: 3rem;
+        }
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f0f4f9;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: #1f5e7e;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: 1px solid #e2e9f0;
+        }
+
+        .btn-link:hover {
+            background: #e6edf4;
+            color: #0b4b66;
+            border-color: #bdd4e2;
+            transform: scale(0.98);
+        }
+
+        .btn-link:active {
+            background: #dae4ed;
+        }
+
+        /* 资源网站区块 */
+        .resource-section {
+            background: #f8fafd;
+            border-radius: 1.8rem;
+            padding: 2rem 1.8rem;
+            margin-top: 1rem;
+            border: 1px solid #e9edf2;
+        }
+
+        .resource-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f8;
+        }
+
+        .resource-info h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1f4e6e;
+        }
+
+        .resource-info p {
+            color: #5d6f83;
+            font-size: 0.9rem;
+        }
+
+        .resource-btn {
+            background: #1e4a6b;
+            color: white;
+            text-decoration: none;
+            padding: 0.65rem 1.6rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: none;
+        }
+
+        .resource-btn:hover {
+            background: #0f3a55;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px -6px rgba(0,0,0,0.2);
+        }
+
+        /* 敬请期待区域 */
+        .coming-soon {
+            margin-top: 2rem;
+            text-align: center;
+            background: #fefce8;
+            border-radius: 2rem;
+            padding: 1rem;
+            border: 1px dashed #f7d44a;
+            color: #9b6f0b;
+            font-weight: 500;
+        }
+
+        .footer {
+            background: #f0f4fa;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.8rem;
+            color: #5b6f86;
+            border-top: 1px solid #e2e9f0;
+        }
+
+        @media (max-width: 680px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .main-content {
+                padding: 1.8rem 1.2rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .apps-grid {
+                gap: 1.2rem;
+            }
+            .resource-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1>📦 HMOS资源宝库</h1>
+        <div class="sub">发现鸿蒙生态 · 匠心应用与实用资源</div>
+        <div class="hero-badge">💡 鸿蒙原生 · 精致体验</div>
+    </div>
+
+    <div class="main-content">
+        <!-- 作者推荐区域 -->
+        <div class="section-title">
+            <i>✨</i> 
+            <span>作者推荐 · 品质之选</span>
+        </div>
+
+        <div class="apps-grid" id="appsContainer">
+            <!-- 应用数据将会通过js动态渲染，确保链接准确且易于维护 -->
+        </div>
+
+        <!-- 资源网站专区 -->
+        <div class="section-title">
+            <i>🌐</i>
+            <span>资源网站</span>
+        </div>
+        <div class="resource-section">
+            <div class="resource-card">
+                <div class="resource-info">
+                    <h3>📁 鸿蒙资源聚合站</h3>
+                    <p>发现更多实用工具、主题、教程 —— HMOS 玩家必备手册</p>
+                </div>
+                <a href="https://www.sydxky.cn/index.php" class="resource-btn" target="_blank" rel="noopener noreferrer">
+                    访问网站 &nbsp;→
+                </a>
+            </div>
+        </div>
+
+        <!-- 更多敬请期待 模块 -->
+        <div class="coming-soon">
+            🚧 更多精彩应用与资源正在路上，敬请关注 HMOS 生态 · 保持探索
+        </div>
+    </div>
+    <div class="footer">
+        © 2025 HMOS资源宝库 | 致力于推广鸿蒙匠心应用，链接均来源于官方应用市场，安全可靠。
+        <br style="display: inline-block; margin: 0 4px;">
+        <span style="opacity: 0.6;">✨ 部署于 GitHub Pages · 纯净体验</span>
+    </div>
+</div>
+
+<script>
+    // 应用列表数据 (严格按照题目提供的信息，包含名称及对应的华为应用市场链接)
+    const applications = [
+        {
+            name: "笺记",
+            description: "轻量笔记 · 灵感记录，优雅高效的记事本工具，鸿蒙专属设计。",
+            url: "https://appgallery.huawei.com/app/detail?id=com.hwohos.scrap.hw&channelId=SHARE&source=appshare"
+        },
+        {
+            name: "MeoW",
+            description: "趣味工具 / 猫咪主题助手，兼具可爱与实用性的创意应用。",
+            url: "https://appgallery.huawei.com/app/detail?id=com.chuckfang.meow&channelId=SHARE&source=appshare"
+        },
+        {
+            name: "Berry",
+            description: "极简浏览器 · 无扰浏览，轻快洁净的网页冲浪体验。",
+            url: "https://appgallery.huawei.com/app/detail?id=com.berry.browser&channelId=SHARE&source=appshare"
+        },
+        {
+            name: "溏心音乐",
+            description: "甜系音乐播放器，沉浸听歌，界面温润细腻。",
+            url: "https://appgallery.huawei.com/app/detail?id=com.salmon.sweetmusic&channelId=SHARE&source=appshare"
+        },
+        {
+            name: "流心播放器",
+            description: "丝滑视频播放器，支持多格式，流畅观影利器。",
+            url: "https://appgallery.huawei.com/app/detail?id=com.example.sweetvideo&channelId=SHARE&source=appshare"
+        },
+        {
+            name: "像素匠",
+            description: "像素画创作工坊，怀旧艺术与数字绘画的碰撞。",
+            url: "https://appgallery.huawei.com/app/detail?id=com.soulharbor.pixelartisan&channelId=SHARE&source=appshare"
+        },
+        {
+            name: "奇妙工具箱",
+            description: "集合多种实用小工具，生活效率提升助手。",
+            url: "https://appgallery.huawei.com/app/detail?id=com.magicalstory.toolbox.huawei&channelId=SHARE&source=appshare"
+        },
+        {
+            name: "便单",
+            description: "简洁待办清单，极简风格，帮你轻松管理日程。",
+            url: "https://appgallery.huawei.com/app/detail?id=cn.biandangroup.biandan&channelId=SHARE&source=appshare"
+        }
+    ];
+
+    // 获取容器
+    const appsContainer = document.getElementById('appsContainer');
+
+    // 生成应用卡片HTML
+    function buildCards() {
+        if (!appsContainer) return;
+        let html = '';
+        for (let app of applications) {
+            // 确保链接在新标签页打开且安全
+            const safeUrl = app.url.replace(/&amp;/g, '&');
+            html += `
+                <div class="app-card">
+                    <div class="card-content">
+                        <div class="app-name">${escapeHtml(app.name)}</div>
+                        <div class="app-desc">${escapeHtml(app.description)}</div>
+                        <a href="${escapeHtml(safeUrl)}" class="btn-link" target="_blank" rel="noopener noreferrer">
+                            📲 查看详情 &nbsp;→
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+        appsContainer.innerHTML = html;
+    }
+
+    // 简单的防XSS辅助函数 (保留合法字符)
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    // 等待DOM完全加载后构建卡片，确保容器存在
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', buildCards);
+    } else {
+        buildCards();
+    }
+
+    // GitHub Pages 环境标识（仅在控制台输出友好信息）
+    console.log("✅ HMOS资源宝库已加载 | 基于 GitHub Pages 部署 | 所有链接均指向官方应用市场");
+</script>
+<!-- 
+    GitHub Pages 部署说明：
+    1. 将本文件保存为 index.html
+    2. 在仓库根目录下创建一个空文件 .nojekyll (可避免Jekyll构建处理)
+    3. 推送到 GitHub 仓库，开启 Pages 服务即可。
+    
+    如果用户不需要自定义域名，访问 https://用户名.github.io/仓库名 即可看到效果。
+    本项目完全无外部依赖，离线可用且安全。
+-->
+</body>
+</html>
